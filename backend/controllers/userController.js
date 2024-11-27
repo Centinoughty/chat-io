@@ -14,3 +14,14 @@ module.exports.getUserDetails = async (req, res) => {
     console.log(error);
   }
 };
+
+module.exports.getAllUsers = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const users = await User.find({ _id: { $ne: userId } });
+
+    res.status(200).json({ message: "Users fetched succesfully", users });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
