@@ -6,6 +6,7 @@ const { connectDb } = require("./config/db");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const chatRoutes = require("./routes/chat");
+const messageRoutes = require("./routes/message");
 
 // Initialization
 const app = express();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 connectDb();
 app.listen(PORT, () => {
