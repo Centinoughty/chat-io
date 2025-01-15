@@ -32,4 +32,8 @@ UserModel.pre("save", async function (next) {
   next();
 });
 
+UserModel.methods.isPasswordMatch = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
 module.exports = mongoose.model("User", UserModel);
